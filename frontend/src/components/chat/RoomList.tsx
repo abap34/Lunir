@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useWebSocket } from '../../hooks/useWebSocket'
 import type { Room } from '../../services/api'
 import { api } from '../../services/api'
 import CreateRoomModal from './CreateRoomModal'
@@ -6,9 +7,12 @@ import CreateRoomModal from './CreateRoomModal'
 interface RoomListProps {
   selectedRoom?: Room
   onRoomSelect: (room: Room) => void
+  onRoomCreated?: (room: Room) => void
+  showCreateModal?: boolean
+  onCreateModalClose?: () => void
 }
 
-export default function RoomList({ selectedRoom, onRoomSelect }: RoomListProps) {
+export default function RoomList({ selectedRoom, onRoomSelect, onRoomCreated, showCreateModal: externalShowCreateModal, onCreateModalClose }: RoomListProps) {
   const [rooms, setRooms] = useState<Room[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -60,12 +64,30 @@ export default function RoomList({ selectedRoom, onRoomSelect }: RoomListProps) 
     loadRooms()
   }, [])
 
+  // WebSocketでルーム作成通知を受信
+  useWebSocket({
+    onRoomCreated: (newRoom) => {
+      console.log('Room created notification received:', newRoom)
+      // 新しいルームをリストに追加（自分が作成したものでない場合）
+      setRooms(prev => {
+        // 重複チェック
+        if (prev.some(room => room.id === newRoom.id)) {
+          return prev
+        }
+        return [newRoom, ...prev]
+      })
+    }
+  })
+
   const handleCreateRoom = async (name: string, description: string, isPrivate: boolean) => {
     try {
       const newRoom = await api.createRoom(name, description, isPrivate)
       setRooms(prev => [newRoom, ...prev])
       setShowCreateModal(false)
+      onCreateModalClose?.() // 外部からのモーダル制御がある場合
       onRoomSelect(newRoom)
+      // 親コンポーネントに新しいルームの作成を通知
+      onRoomCreated?.(newRoom)
     } catch (err) {
       console.error('Failed to create room:', err)
       throw new Error('Failed to create room')
@@ -147,10 +169,13 @@ export default function RoomList({ selectedRoom, onRoomSelect }: RoomListProps) 
         )}
       </div>
 
-      {showCreateModal && (
+      {(showCreateModal || externalShowCreateModal) && (
         <CreateRoomModal
           onCreateRoom={handleCreateRoom}
-          onClose={() => setShowCreateModal(false)}
+          onClose={() => {
+            setShowCreateModal(false)
+            onCreateModalClose?.()
+          }}
         />
       )}
     </div>

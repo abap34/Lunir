@@ -1,8 +1,8 @@
 import { useState } from 'react'
+import { BlockMath, InlineMath } from 'react-katex'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { InlineMath, BlockMath } from 'react-katex'
 import type { Message } from '../../services/api'
 
 interface MessageItemProps {
@@ -24,18 +24,18 @@ export default function MessageItem({ message, isGrouped = false, onReply }: Mes
 
   const renderContent = () => {
     const hasLatex = message.content.includes('$')
-    
+
     if (hasLatex) {
       // LaTeX処理が必要な場合
       const parts: JSX.Element[] = []
       let remaining = message.content
       let key = 0
-      
+
       // ブロック数式 $$...$$
       const blockLatexRegex = /\$\$([\s\S]*?)\$\$/g
       let match
       let lastIndex = 0
-      
+
       while ((match = blockLatexRegex.exec(remaining)) !== null) {
         // マッチ前のテキスト
         if (match.index > lastIndex) {
@@ -48,27 +48,27 @@ export default function MessageItem({ message, isGrouped = false, onReply }: Mes
             )
           }
         }
-        
+
         // ブロック数式
         try {
           parts.push(<BlockMath key={`block-${key++}`} math={match[1].trim()} />)
         } catch {
           parts.push(<span key={`error-${key++}`}>$$${match[1]}$$</span>)
         }
-        
+
         lastIndex = match.index + match[0].length
       }
-      
+
       // 残りのテキスト（インライン数式処理）
       if (lastIndex < remaining.length) {
         const finalText = remaining.substring(lastIndex)
-        
+
         // インライン数式 $...$
         const inlineLatexRegex = /\$([^$\n]+?)\$/g
         const inlineParts: JSX.Element[] = []
         let inlineLastIndex = 0
         let inlineKey = 0
-        
+
         while ((match = inlineLatexRegex.exec(finalText)) !== null) {
           // マッチ前のテキスト
           if (match.index > inlineLastIndex) {
@@ -77,17 +77,17 @@ export default function MessageItem({ message, isGrouped = false, onReply }: Mes
               inlineParts.push(<span key={`inline-text-${inlineKey++}`}>{beforeText}</span>)
             }
           }
-          
+
           // インライン数式
           try {
             inlineParts.push(<InlineMath key={`inline-${inlineKey++}`} math={match[1].trim()} />)
           } catch {
             inlineParts.push(<span key={`inline-error-${inlineKey++}`}>${match[1]}$</span>)
           }
-          
+
           inlineLastIndex = match.index + match[0].length
         }
-        
+
         // 残りのテキスト
         if (inlineLastIndex < finalText.length) {
           const restText = finalText.substring(inlineLastIndex)
@@ -95,12 +95,12 @@ export default function MessageItem({ message, isGrouped = false, onReply }: Mes
             inlineParts.push(<span key={`rest-${inlineKey++}`}>{restText}</span>)
           }
         }
-        
+
         if (inlineParts.length > 0) {
           parts.push(<div key={`inline-wrapper-${key++}`}>{inlineParts}</div>)
         }
       }
-      
+
       return (
         <div style={{
           color: 'var(--foreground0)',
@@ -111,7 +111,7 @@ export default function MessageItem({ message, isGrouped = false, onReply }: Mes
         </div>
       )
     }
-    
+
     // 通常のMarkdownレンダリング
     return (
       <div style={{
@@ -160,9 +160,9 @@ export default function MessageItem({ message, isGrouped = false, onReply }: Mes
       )
     },
     h1: ({ children }: any) => (
-      <h1 style={{ 
-        fontSize: '1.5rem', 
-        fontWeight: 'bold', 
+      <h1 style={{
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
         marginBottom: '0.5rem',
         color: 'var(--foreground0)'
       }}>
@@ -170,9 +170,9 @@ export default function MessageItem({ message, isGrouped = false, onReply }: Mes
       </h1>
     ),
     h2: ({ children }: any) => (
-      <h2 style={{ 
-        fontSize: '1.25rem', 
-        fontWeight: 'bold', 
+      <h2 style={{
+        fontSize: '1.25rem',
+        fontWeight: 'bold',
         marginBottom: '0.25rem',
         color: 'var(--foreground0)'
       }}>
@@ -180,9 +180,9 @@ export default function MessageItem({ message, isGrouped = false, onReply }: Mes
       </h2>
     ),
     h3: ({ children }: any) => (
-      <h3 style={{ 
-        fontSize: '1.1rem', 
-        fontWeight: 'bold', 
+      <h3 style={{
+        fontSize: '1.1rem',
+        fontWeight: 'bold',
         marginBottom: '0.25rem',
         color: 'var(--foreground0)'
       }}>
@@ -211,11 +211,11 @@ export default function MessageItem({ message, isGrouped = false, onReply }: Mes
       </blockquote>
     ),
     a: ({ children, href }: any) => (
-      <a 
-        href={href} 
-        target="_blank" 
+      <a
+        href={href}
+        target="_blank"
         rel="noopener noreferrer"
-        style={{ 
+        style={{
           color: 'var(--blue)',
           textDecoration: 'underline'
         }}

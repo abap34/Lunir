@@ -194,6 +194,29 @@ class ConnectionManager:
         for user_id in disconnected_users:
             await self.disconnect_async(user_id)
 
+    async def broadcast_room_created(self, room_data: Dict[str, Any]):
+        """新しいルーム作成を全ユーザーに通知"""
+        message = {
+            "type": "room_created",
+            "data": room_data,
+            "timestamp": datetime.now().isoformat(),
+        }
+
+        # すべての接続ユーザーに通知
+        disconnected_users = []
+        for user_id, websocket in self.active_connections.items():
+            try:
+                await websocket.send_text(json.dumps(message))
+            except WebSocketDisconnect:
+                disconnected_users.append(user_id)
+            except Exception as e:
+                logger.error(f"Error broadcasting room creation to user {user_id}: {e}")
+                disconnected_users.append(user_id)
+
+        # 切断されたユーザーをクリーンアップ
+        for user_id in disconnected_users:
+            await self.disconnect_async(user_id)
+
     def get_room_users(self, room_id: int) -> List[Dict[str, Any]]:
         """ルーム内のユーザー一覧を取得"""
         if room_id not in self.room_connections:

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import CreateRoomModal from '../components/chat/CreateRoomModal'
 import MessageInput from '../components/chat/MessageInput'
 import MessageList from '../components/chat/MessageList'
 import RoomList from '../components/chat/RoomList'
@@ -11,9 +10,14 @@ import './ChatPage.css'
 export default function ChatPage() {
   const { user } = useAuth()
   const [selectedRoom, setSelectedRoom] = useState<Room | null>(null)
-  const [showCreateRoom, setShowCreateRoom] = useState(false)
-  const [error, setError] = useState<string | null>(null)
   const [messages, setMessages] = useState<Message[]>([])
+  const [showCreateRoomModal, setShowCreateRoomModal] = useState(false)
+
+  // WebSocketでルーム作成通知を受信した時のコールバック
+  const handleRoomCreatedFromWebSocket = (newRoom: Room) => {
+    // RoomListコンポーネントで自動更新されるので、ここでは何もしない
+    console.log('New room created by another user:', newRoom)
+  }
 
   const {
     connectionStatus,
@@ -26,9 +30,9 @@ export default function ChatPage() {
       console.log('New message received:', message)
       setMessages(prev => [...prev, message])
     },
+    onRoomCreated: handleRoomCreatedFromWebSocket,
     onError: (error) => {
       console.error('WebSocket error:', error)
-      setError('WebSocket接続エラーが発生しました')
     }
   })
 
@@ -54,16 +58,9 @@ export default function ChatPage() {
   }
 
   // ルーム作成成功時のコールバック
-  const handleCreateRoom = async (name: string, description: string, isPrivate: boolean) => {
-    try {
-      // APIコールは実装が必要 - 現在は仮実装
-      console.log('Creating room:', { name, description, isPrivate })
-      setShowCreateRoom(false)
-      // TODO: 実際のAPI呼び出しとルーム作成処理を実装
-    } catch (error) {
-      console.error('Failed to create room:', error)
-      throw error
-    }
+  const handleRoomCreated = (newRoom: Room) => {
+    // 新しく作成されたルームを選択
+    setSelectedRoom(newRoom)
   }
 
   if (!user) {
@@ -83,7 +80,7 @@ export default function ChatPage() {
             CHANNELS
           </span>
           <button
-            onClick={() => setShowCreateRoom(true)}
+            onClick={() => setShowCreateRoomModal(true)}
             size-="small"
             variant-="ghost"
             style={{
@@ -103,6 +100,9 @@ export default function ChatPage() {
         <RoomList
           selectedRoom={selectedRoom || undefined}
           onRoomSelect={handleRoomSelect}
+          onRoomCreated={handleRoomCreated}
+          showCreateModal={showCreateRoomModal}
+          onCreateModalClose={() => setShowCreateRoomModal(false)}
         />
       </div>
 
@@ -178,23 +178,9 @@ export default function ChatPage() {
         ) : (
           <div is-="column" align-="center center" gap-="1" style={{ height: '100%' }}>
             <span is-="badge" variant-="background0">LUNIR CHAT</span>
-            <p style={{ color: 'var(--foreground1)', textAlign: 'center' }}>
-              ソフトウェアエンジニア向けチャットシステム
-            </p>
-            <p style={{ color: 'var(--foreground2)', textAlign: 'center', fontSize: '0.9rem' }}>
-              左側のチャンネルリストからルームを選択してください
-            </p>
           </div>
         )}
       </div>
-
-      {/* モーダル */}
-      {showCreateRoom && (
-        <CreateRoomModal
-          onClose={() => setShowCreateRoom(false)}
-          onCreateRoom={handleCreateRoom}
-        />
-      )}
     </div>
   )
 }

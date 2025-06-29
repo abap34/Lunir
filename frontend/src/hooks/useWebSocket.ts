@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import type { Message } from '../services/api'
+import type { Message, Room } from '../services/api'
 
 interface WebSocketMessage {
   type: string
-  payload: any
+  payload?: unknown
+  data?: unknown
   timestamp: string
   message_id?: string
 }
@@ -11,8 +12,9 @@ interface WebSocketMessage {
 interface UseWebSocketOptions {
   roomId?: number
   onMessage?: (message: Message) => void
-  onUserJoined?: (user: any) => void
-  onUserLeft?: (user: any) => void
+  onUserJoined?: (user: unknown) => void
+  onUserLeft?: (user: unknown) => void
+  onRoomCreated?: (room: Room) => void
   onError?: (error: string) => void
 }
 
@@ -65,16 +67,29 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
 
         switch (data.type) {
           case 'message_received':
-            optionsRef.current.onMessage?.(data.payload)
+            if (data.payload) {
+              optionsRef.current.onMessage?.(data.payload as Message)
+            }
             break
           case 'user_joined':
-            optionsRef.current.onUserJoined?.(data.payload.user)
+            if (data.payload && typeof data.payload === 'object' && data.payload !== null && 'user' in data.payload) {
+              optionsRef.current.onUserJoined?.((data.payload as { user: unknown }).user)
+            }
             break
           case 'user_left':
-            optionsRef.current.onUserLeft?.(data.payload.user)
+            if (data.payload && typeof data.payload === 'object' && data.payload !== null && 'user' in data.payload) {
+              optionsRef.current.onUserLeft?.((data.payload as { user: unknown }).user)
+            }
+            break
+          case 'room_created':
+            if (data.data) {
+              optionsRef.current.onRoomCreated?.(data.data as Room)
+            }
             break
           case 'error':
-            optionsRef.current.onError?.(data.payload.message)
+            if (data.payload && typeof data.payload === 'object' && data.payload !== null && 'message' in data.payload) {
+              optionsRef.current.onError?.((data.payload as { message: string }).message)
+            }
             break
           case 'connected':
             console.log('WebSocket authenticated successfully')

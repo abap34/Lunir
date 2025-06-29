@@ -72,7 +72,7 @@ export default function MessageInput({ onSendMessage, disabled = false, placehol
           }}
           rows={1}
         />
-        
+
         <button
           type="button"
           onClick={handleSubmit}
