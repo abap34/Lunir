@@ -1,0 +1,1200 @@
+INFO:     Started server process [23312]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59584 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59594 - "GET /api/v1/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59605 - "GET /auth/github/login HTTP/1.1" 200 OK
+2025-06-29 12:17:08,250 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:08,260 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:08,260 INFO sqlalchemy.engine.Engine [generated in 0.00013s] (2,)
+2025-06-29 12:17:08,261 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59622 - "GET /auth/me HTTP/1.1" 200 OK
+2025-06-29 12:17:08,263 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:08,263 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:08,263 INFO sqlalchemy.engine.Engine [cached since 0.003503s ago] (2,)
+2025-06-29 12:17:08,267 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59622 - "GET /auth/me HTTP/1.1" 200 OK
+2025-06-29 12:17:08,288 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:08,288 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:08,288 INFO sqlalchemy.engine.Engine [cached since 0.02854s ago] (2,)
+INFO:     127.0.0.1:59624 - "GET /api/v1/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59624 - "GET /api/v1/status HTTP/1.1" 200 OK
+2025-06-29 12:17:08,291 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:17:08,291 INFO sqlalchemy.engine.Engine [generated in 0.00010s] (2,)
+2025-06-29 12:17:08,295 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?)
+2025-06-29 12:17:08,295 INFO sqlalchemy.engine.Engine [generated in 0.00009s] (1,)
+2025-06-29 12:17:08,296 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:17:08,296 INFO sqlalchemy.engine.Engine [generated in 0.00007s] (2,)
+2025-06-29 12:17:08,296 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59622 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:17:08,297 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:08,297 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:08,297 INFO sqlalchemy.engine.Engine [cached since 0.03755s ago] (2,)
+2025-06-29 12:17:08,298 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:17:08,298 INFO sqlalchemy.engine.Engine [cached since 0.006514s ago] (2,)
+2025-06-29 12:17:08,298 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?)
+2025-06-29 12:17:08,298 INFO sqlalchemy.engine.Engine [cached since 0.003868s ago] (1,)
+2025-06-29 12:17:08,299 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:17:08,299 INFO sqlalchemy.engine.Engine [cached since 0.003288s ago] (2,)
+2025-06-29 12:17:08,299 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59624 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:17:11,136 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:11,136 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:11,136 INFO sqlalchemy.engine.Engine [cached since 2.876s ago] (1,)
+2025-06-29 12:17:11,137 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59633 - "POST /auth/dev/login HTTP/1.1" 200 OK
+2025-06-29 12:17:17,235 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:17,236 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.is_active = 1
+ LIMIT ? OFFSET ?
+2025-06-29 12:17:17,236 INFO sqlalchemy.engine.Engine [generated in 0.00009s] (10, 0)
+2025-06-29 12:17:17,236 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59646 - "GET /auth/dev/users HTTP/1.1" 200 OK
+2025-06-29 12:17:23,340 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:23,341 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:23,341 INFO sqlalchemy.engine.Engine [cached since 15.08s ago] (1,)
+2025-06-29 12:17:23,341 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59656 - "POST /auth/dev/login HTTP/1.1" 200 OK
+2025-06-29 12:17:23,362 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:23,362 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:23,362 INFO sqlalchemy.engine.Engine [cached since 15.1s ago] (1,)
+2025-06-29 12:17:23,362 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59658 - "GET /auth/me HTTP/1.1" 200 OK
+2025-06-29 12:17:27,688 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:27,689 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:27,689 INFO sqlalchemy.engine.Engine [cached since 19.43s ago] (1,)
+2025-06-29 12:17:27,689 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59669 - "POST /auth/dev/login HTTP/1.1" 200 OK
+2025-06-29 12:17:27,710 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:27,710 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:27,710 INFO sqlalchemy.engine.Engine [cached since 19.45s ago] (1,)
+2025-06-29 12:17:27,710 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:17:27,710 INFO sqlalchemy.engine.Engine [cached since 19.42s ago] (1,)
+2025-06-29 12:17:27,711 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59671 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:17:33,302 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:33,302 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:33,303 INFO sqlalchemy.engine.Engine [cached since 25.04s ago] (1,)
+2025-06-29 12:17:33,303 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59674 - "POST /auth/dev/login HTTP/1.1" 200 OK
+2025-06-29 12:17:33,324 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:33,324 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:33,324 INFO sqlalchemy.engine.Engine [cached since 25.06s ago] (1,)
+2025-06-29 12:17:33,325 INFO sqlalchemy.engine.Engine INSERT INTO chat_rooms (name, description, is_private, created_by) VALUES (?, ?, ?, ?) RETURNING id, created_at, updated_at
+2025-06-29 12:17:33,325 INFO sqlalchemy.engine.Engine [generated in 0.00007s] ('テストルーム', '開発テスト用ルーム', 0, 1)
+2025-06-29 12:17:33,326 INFO sqlalchemy.engine.Engine INSERT INTO room_members (user_id, room_id, role) VALUES (?, ?, ?) RETURNING id, joined_at
+2025-06-29 12:17:33,326 INFO sqlalchemy.engine.Engine [generated in 0.00006s] (1, 2, 'ADMIN')
+2025-06-29 12:17:33,327 INFO sqlalchemy.engine.Engine COMMIT
+2025-06-29 12:17:33,327 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:33,328 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms 
+WHERE chat_rooms.id = ?
+2025-06-29 12:17:33,328 INFO sqlalchemy.engine.Engine [generated in 0.00005s] (2,)
+2025-06-29 12:17:33,329 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59676 - "POST /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:17:38,325 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:38,325 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:38,325 INFO sqlalchemy.engine.Engine [cached since 30.07s ago] (1,)
+2025-06-29 12:17:38,326 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59685 - "POST /auth/dev/login HTTP/1.1" 200 OK
+2025-06-29 12:17:38,346 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:38,346 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:38,346 INFO sqlalchemy.engine.Engine [cached since 30.09s ago] (1,)
+2025-06-29 12:17:38,347 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:17:38,347 INFO sqlalchemy.engine.Engine [cached since 30.06s ago] (1,)
+2025-06-29 12:17:38,347 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?)
+2025-06-29 12:17:38,347 INFO sqlalchemy.engine.Engine [cached since 30.05s ago] (2,)
+2025-06-29 12:17:38,348 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:17:38,348 INFO sqlalchemy.engine.Engine [cached since 30.05s ago] (1,)
+2025-06-29 12:17:38,348 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59687 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59692 - "POST /auth/dev/create-test-user HTTP/1.1" 422 Unprocessable Entity
+2025-06-29 12:17:51,539 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:51,540 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ?
+2025-06-29 12:17:51,540 INFO sqlalchemy.engine.Engine [generated in 0.00008s] ('testuser',)
+2025-06-29 12:17:51,541 INFO sqlalchemy.engine.Engine INSERT INTO users (github_id, username, display_name, email, avatar_url, bio, is_active) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at, updated_at
+2025-06-29 12:17:51,541 INFO sqlalchemy.engine.Engine [generated in 0.00007s] (-8243, 'testuser', 'Test User', 'test@example.com', 'https://avatars.githubusercontent.com/u/8243', 'Test user created for development', 1)
+2025-06-29 12:17:51,542 INFO sqlalchemy.engine.Engine COMMIT
+2025-06-29 12:17:51,542 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:17:51,543 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:17:51,543 INFO sqlalchemy.engine.Engine [generated in 0.00006s] (3,)
+2025-06-29 12:17:51,543 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59700 - "POST /auth/dev/create-test-user?username=testuser&display_name=Test%20User&email=test@example.com HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59762 - "WebSocket /ws/chat" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     connection closed
+2025-06-29 12:19:04,760 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:04,761 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:04,761 INFO sqlalchemy.engine.Engine [cached since 116.5s ago] (1,)
+2025-06-29 12:19:04,761 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:04,761 INFO sqlalchemy.engine.Engine [generated in 0.00007s] (1, 2)
+INFO:     127.0.0.1:59781 - "WebSocket /ws/chat?token=dev&room_id=2" [accepted]
+INFO:     connection open
+2025-06-29 12:19:04,763 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:15,503 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:15,503 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:15,503 INFO sqlalchemy.engine.Engine [cached since 127.2s ago] (1,)
+2025-06-29 12:19:15,504 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:15,504 INFO sqlalchemy.engine.Engine [cached since 10.74s ago] (1, 2)
+INFO:     127.0.0.1:59792 - "WebSocket /ws/chat?token=dev&room_id=2" [accepted]
+INFO:     connection open
+2025-06-29 12:19:15,505 INFO sqlalchemy.engine.Engine INSERT INTO messages (content, message_type, user_id, room_id, parent_id, has_latex, has_code) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at, updated_at
+2025-06-29 12:19:15,505 INFO sqlalchemy.engine.Engine [generated in 0.00007s] ('WebSocketテストメッセージ', 'TEXT', 1, 2, None, 0, 0)
+INFO:     connection closed
+2025-06-29 12:19:15,506 INFO sqlalchemy.engine.Engine COMMIT
+2025-06-29 12:19:15,507 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:15,507 INFO sqlalchemy.engine.Engine SELECT messages.id, messages.content, messages.message_type, messages.user_id, messages.room_id, messages.parent_id, messages.has_latex, messages.has_code, messages.created_at, messages.updated_at 
+FROM messages 
+WHERE messages.id = ?
+2025-06-29 12:19:15,507 INFO sqlalchemy.engine.Engine [generated in 0.00006s] (1,)
+WebSocket error for user 1: WebSocket is not connected. Need to call "accept" first.
+2025-06-29 12:19:15,508 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:19:20,540 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:20,541 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:20,541 INFO sqlalchemy.engine.Engine [cached since 132.3s ago] (2,)
+2025-06-29 12:19:20,542 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59802 - "GET /auth/me HTTP/1.1" 200 OK
+2025-06-29 12:19:20,548 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:20,548 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:20,548 INFO sqlalchemy.engine.Engine [cached since 132.3s ago] (2,)
+2025-06-29 12:19:20,550 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59802 - "GET /auth/me HTTP/1.1" 200 OK
+2025-06-29 12:19:20,588 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:20,588 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:20,588 INFO sqlalchemy.engine.Engine [cached since 132.3s ago] (2,)
+INFO:     127.0.0.1:59804 - "GET /api/v1/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59804 - "GET /api/v1/status HTTP/1.1" 200 OK
+2025-06-29 12:19:20,599 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:19:20,599 INFO sqlalchemy.engine.Engine [cached since 132.3s ago] (2,)
+2025-06-29 12:19:20,601 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?)
+2025-06-29 12:19:20,601 INFO sqlalchemy.engine.Engine [cached since 132.3s ago] (1,)
+2025-06-29 12:19:20,614 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:19:20,614 INFO sqlalchemy.engine.Engine [cached since 132.3s ago] (2,)
+2025-06-29 12:19:20,615 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59802 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:19:20,617 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:20,617 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:20,617 INFO sqlalchemy.engine.Engine [cached since 132.4s ago] (2,)
+2025-06-29 12:19:20,618 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:19:20,618 INFO sqlalchemy.engine.Engine [cached since 132.3s ago] (2,)
+2025-06-29 12:19:20,619 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?)
+2025-06-29 12:19:20,619 INFO sqlalchemy.engine.Engine [cached since 132.3s ago] (1,)
+2025-06-29 12:19:20,620 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:19:20,620 INFO sqlalchemy.engine.Engine [cached since 132.3s ago] (2,)
+2025-06-29 12:19:20,621 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59804 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:19:21,685 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:21,686 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:21,686 INFO sqlalchemy.engine.Engine [cached since 133.4s ago] (2,)
+2025-06-29 12:19:21,688 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:21,688 INFO sqlalchemy.engine.Engine [cached since 16.93s ago] (2, 1)
+2025-06-29 12:19:21,688 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:21,689 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:21,689 INFO sqlalchemy.engine.Engine [cached since 133.4s ago] (2,)
+2025-06-29 12:19:21,691 INFO sqlalchemy.engine.Engine SELECT messages.id, messages.content, messages.message_type, messages.user_id, messages.room_id, messages.parent_id, messages.has_latex, messages.has_code, messages.created_at, messages.updated_at 
+FROM messages 
+WHERE messages.room_id = ? ORDER BY messages.created_at DESC
+ LIMIT ? OFFSET ?
+2025-06-29 12:19:21,691 INFO sqlalchemy.engine.Engine [generated in 0.00015s] (1, 50, 0)
+2025-06-29 12:19:21,692 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:21,692 INFO sqlalchemy.engine.Engine [cached since 16.93s ago] (2, 1)
+2025-06-29 12:19:21,693 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59808 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59804 - "GET /api/v1/rooms/1/messages?limit=50 HTTP/1.1" 200 OK
+2025-06-29 12:19:21,696 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:19:21,698 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:21,698 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:21,698 INFO sqlalchemy.engine.Engine [cached since 133.4s ago] (2,)
+INFO:     connection closed
+2025-06-29 12:19:21,700 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:21,700 INFO sqlalchemy.engine.Engine [cached since 16.94s ago] (2, 1)
+2025-06-29 12:19:21,701 INFO sqlalchemy.engine.Engine SELECT messages.id, messages.content, messages.message_type, messages.user_id, messages.room_id, messages.parent_id, messages.has_latex, messages.has_code, messages.created_at, messages.updated_at 
+FROM messages 
+WHERE messages.room_id = ? ORDER BY messages.created_at DESC
+ LIMIT ? OFFSET ?
+2025-06-29 12:19:21,701 INFO sqlalchemy.engine.Engine [cached since 0.009537s ago] (1, 50, 0)
+2025-06-29 12:19:21,701 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59802 - "GET /api/v1/rooms/1/messages?limit=50 HTTP/1.1" 200 OK
+2025-06-29 12:19:21,707 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:21,707 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:21,707 INFO sqlalchemy.engine.Engine [cached since 133.4s ago] (2,)
+2025-06-29 12:19:21,708 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:21,708 INFO sqlalchemy.engine.Engine [cached since 16.95s ago] (2, 1)
+INFO:     127.0.0.1:59811 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+WebSocket error for user 2: WebSocket is not connected. Need to call "accept" first.
+2025-06-29 12:19:21,709 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:21,719 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:21,719 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:21,719 INFO sqlalchemy.engine.Engine [cached since 133.5s ago] (2,)
+2025-06-29 12:19:21,720 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:21,720 INFO sqlalchemy.engine.Engine [cached since 16.96s ago] (2, 1)
+INFO:     127.0.0.1:59813 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:21,724 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:21,733 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:21,733 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:21,733 INFO sqlalchemy.engine.Engine [cached since 133.5s ago] (2,)
+2025-06-29 12:19:21,735 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:21,735 INFO sqlalchemy.engine.Engine [cached since 16.97s ago] (2, 1)
+INFO:     127.0.0.1:59815 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:21,743 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:21,754 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:21,754 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:21,754 INFO sqlalchemy.engine.Engine [cached since 133.5s ago] (2,)
+2025-06-29 12:19:21,755 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:21,755 INFO sqlalchemy.engine.Engine [cached since 16.99s ago] (2, 1)
+INFO:     127.0.0.1:59818 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:21,759 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:21,768 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:21,768 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:21,768 INFO sqlalchemy.engine.Engine [cached since 133.5s ago] (2,)
+2025-06-29 12:19:21,768 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:21,768 INFO sqlalchemy.engine.Engine [cached since 17.01s ago] (2, 1)
+INFO:     127.0.0.1:59820 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:21,772 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:21,786 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:21,787 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:21,787 INFO sqlalchemy.engine.Engine [cached since 133.5s ago] (2,)
+2025-06-29 12:19:21,787 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:21,787 INFO sqlalchemy.engine.Engine [cached since 17.03s ago] (2, 1)
+INFO:     127.0.0.1:59823 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+WebSocket error for user 2: WebSocket is not connected. Need to call "accept" first.
+2025-06-29 12:19:21,788 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:24,578 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:24,578 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:24,578 INFO sqlalchemy.engine.Engine [cached since 136.3s ago] (2,)
+2025-06-29 12:19:24,580 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:24,580 INFO sqlalchemy.engine.Engine [cached since 19.82s ago] (2, 1)
+INFO:     127.0.0.1:59835 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:25,453 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:25,453 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:25,454 INFO sqlalchemy.engine.Engine [cached since 137.2s ago] (2,)
+2025-06-29 12:19:25,454 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:25,455 INFO sqlalchemy.engine.Engine [cached since 20.69s ago] (2, 1)
+INFO:     127.0.0.1:59837 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:25,457 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:26,417 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:26,417 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:26,417 INFO sqlalchemy.engine.Engine [cached since 138.2s ago] (2,)
+2025-06-29 12:19:26,418 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:26,418 INFO sqlalchemy.engine.Engine [cached since 21.66s ago] (2, 1)
+INFO:     127.0.0.1:59839 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:26,740 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:26,740 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:26,740 INFO sqlalchemy.engine.Engine [cached since 138.5s ago] (2,)
+2025-06-29 12:19:26,742 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:26,742 INFO sqlalchemy.engine.Engine [cached since 21.98s ago] (2, 1)
+INFO:     127.0.0.1:59841 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:26,745 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:26,959 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:26,959 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:26,959 INFO sqlalchemy.engine.Engine [cached since 138.7s ago] (2,)
+2025-06-29 12:19:26,960 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:26,960 INFO sqlalchemy.engine.Engine [cached since 22.2s ago] (2, 1)
+INFO:     127.0.0.1:59843 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:27,233 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:27,233 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:27,233 INFO sqlalchemy.engine.Engine [cached since 139s ago] (1,)
+2025-06-29 12:19:27,234 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:27,234 INFO sqlalchemy.engine.Engine [cached since 22.47s ago] (1, 2)
+INFO:     127.0.0.1:59848 - "WebSocket /ws/chat?token=dev&room_id=2" [accepted]
+INFO:     connection open
+2025-06-29 12:19:27,235 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:27,235 INFO sqlalchemy.engine.Engine [cached since 22.47s ago] (1, 2)
+2025-06-29 12:19:27,235 INFO sqlalchemy.engine.Engine INSERT INTO messages (content, message_type, user_id, room_id, parent_id, has_latex, has_code) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at, updated_at
+2025-06-29 12:19:27,235 INFO sqlalchemy.engine.Engine [cached since 11.73s ago] ('WebSocketテストメッセージ', 'TEXT', 1, 2, None, 0, 0)
+2025-06-29 12:19:27,236 INFO sqlalchemy.engine.Engine COMMIT
+INFO:     connection closed
+2025-06-29 12:19:27,236 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:27,236 INFO sqlalchemy.engine.Engine SELECT messages.id, messages.content, messages.message_type, messages.user_id, messages.room_id, messages.parent_id, messages.has_latex, messages.has_code, messages.created_at, messages.updated_at 
+FROM messages 
+WHERE messages.id = ?
+2025-06-29 12:19:27,236 INFO sqlalchemy.engine.Engine [cached since 11.73s ago] (2,)
+WebSocket error for user 1: WebSocket is not connected. Need to call "accept" first.
+2025-06-29 12:19:27,237 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:19:29,182 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:29,182 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:29,183 INFO sqlalchemy.engine.Engine [cached since 140.9s ago] (2,)
+2025-06-29 12:19:29,183 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:29,184 INFO sqlalchemy.engine.Engine [cached since 24.42s ago] (2, 1)
+INFO:     127.0.0.1:59858 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:29,185 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:29,573 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:29,574 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:29,574 INFO sqlalchemy.engine.Engine [cached since 141.3s ago] (2,)
+2025-06-29 12:19:29,576 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:29,576 INFO sqlalchemy.engine.Engine [cached since 24.81s ago] (2, 1)
+INFO:     127.0.0.1:59860 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:30,001 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:30,003 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:30,003 INFO sqlalchemy.engine.Engine [cached since 141.7s ago] (2,)
+2025-06-29 12:19:30,005 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:30,005 INFO sqlalchemy.engine.Engine [cached since 25.24s ago] (2, 1)
+INFO:     127.0.0.1:59862 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:30,008 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:31,244 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:31,244 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:31,244 INFO sqlalchemy.engine.Engine [cached since 143s ago] (2,)
+2025-06-29 12:19:31,245 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:31,245 INFO sqlalchemy.engine.Engine [cached since 26.48s ago] (2, 1)
+INFO:     127.0.0.1:59864 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:31,833 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:31,833 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:31,833 INFO sqlalchemy.engine.Engine [cached since 143.6s ago] (2,)
+2025-06-29 12:19:31,834 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:31,834 INFO sqlalchemy.engine.Engine [cached since 27.07s ago] (2, 1)
+INFO:     127.0.0.1:59866 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:31,836 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:32,997 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:32,997 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:32,997 INFO sqlalchemy.engine.Engine [cached since 144.7s ago] (2,)
+2025-06-29 12:19:32,998 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:32,998 INFO sqlalchemy.engine.Engine [cached since 28.24s ago] (2, 1)
+INFO:     127.0.0.1:59868 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:33,828 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:33,828 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:33,828 INFO sqlalchemy.engine.Engine [cached since 145.6s ago] (2,)
+2025-06-29 12:19:33,829 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:33,829 INFO sqlalchemy.engine.Engine [cached since 29.07s ago] (2, 1)
+INFO:     127.0.0.1:59870 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:33,831 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:34,178 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:34,179 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:34,179 INFO sqlalchemy.engine.Engine [cached since 145.9s ago] (2,)
+2025-06-29 12:19:34,180 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:34,180 INFO sqlalchemy.engine.Engine [cached since 29.42s ago] (2, 1)
+INFO:     127.0.0.1:59872 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:34,994 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:34,994 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:34,994 INFO sqlalchemy.engine.Engine [cached since 146.7s ago] (2,)
+2025-06-29 12:19:34,997 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:34,997 INFO sqlalchemy.engine.Engine [cached since 30.24s ago] (2, 1)
+INFO:     127.0.0.1:59874 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:34,999 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:35,221 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:35,221 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:35,221 INFO sqlalchemy.engine.Engine [cached since 147s ago] (2,)
+2025-06-29 12:19:35,222 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:35,223 INFO sqlalchemy.engine.Engine [cached since 30.46s ago] (2, 1)
+INFO:     127.0.0.1:59876 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:35,543 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:35,543 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:35,543 INFO sqlalchemy.engine.Engine [cached since 147.3s ago] (2,)
+2025-06-29 12:19:35,545 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:35,546 INFO sqlalchemy.engine.Engine [cached since 30.78s ago] (2, 1)
+INFO:     127.0.0.1:59878 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:35,548 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:37,413 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:37,413 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:37,413 INFO sqlalchemy.engine.Engine [cached since 149.2s ago] (2,)
+2025-06-29 12:19:37,414 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:37,414 INFO sqlalchemy.engine.Engine [cached since 32.65s ago] (2, 1)
+INFO:     127.0.0.1:59880 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:38,055 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:38,055 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:38,055 INFO sqlalchemy.engine.Engine [cached since 149.8s ago] (2,)
+2025-06-29 12:19:38,056 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:38,056 INFO sqlalchemy.engine.Engine [cached since 33.29s ago] (2, 1)
+INFO:     127.0.0.1:59882 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:38,058 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:38,969 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:38,970 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:38,970 INFO sqlalchemy.engine.Engine [cached since 150.7s ago] (2,)
+2025-06-29 12:19:38,971 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:38,971 INFO sqlalchemy.engine.Engine [cached since 34.21s ago] (2, 1)
+INFO:     127.0.0.1:59884 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:39,309 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:39,309 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:39,309 INFO sqlalchemy.engine.Engine [cached since 151s ago] (2,)
+2025-06-29 12:19:39,310 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:39,311 INFO sqlalchemy.engine.Engine [cached since 34.55s ago] (2, 1)
+INFO:     127.0.0.1:59886 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:39,313 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:39,585 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:39,586 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:39,586 INFO sqlalchemy.engine.Engine [cached since 151.3s ago] (2,)
+2025-06-29 12:19:39,588 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:39,588 INFO sqlalchemy.engine.Engine [cached since 34.83s ago] (2, 1)
+INFO:     127.0.0.1:59888 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:41,387 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:41,388 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:41,388 INFO sqlalchemy.engine.Engine [cached since 153.1s ago] (2,)
+2025-06-29 12:19:41,389 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:41,389 INFO sqlalchemy.engine.Engine [cached since 36.63s ago] (2, 1)
+INFO:     127.0.0.1:59890 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:41,391 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:43,792 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:43,793 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:43,793 INFO sqlalchemy.engine.Engine [cached since 155.5s ago] (2,)
+2025-06-29 12:19:43,794 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:43,794 INFO sqlalchemy.engine.Engine [cached since 39.03s ago] (2, 1)
+INFO:     127.0.0.1:59892 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:44,330 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:44,330 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:44,331 INFO sqlalchemy.engine.Engine [cached since 156.1s ago] (2,)
+2025-06-29 12:19:44,332 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:44,332 INFO sqlalchemy.engine.Engine [cached since 39.57s ago] (2, 1)
+INFO:     127.0.0.1:59894 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:44,333 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:44,376 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:44,376 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:44,376 INFO sqlalchemy.engine.Engine [cached since 156.1s ago] (2,)
+2025-06-29 12:19:44,377 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:44,377 INFO sqlalchemy.engine.Engine [cached since 39.62s ago] (2, 1)
+INFO:     127.0.0.1:59896 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:45,182 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:45,182 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:45,182 INFO sqlalchemy.engine.Engine [cached since 156.9s ago] (2,)
+2025-06-29 12:19:45,183 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:45,183 INFO sqlalchemy.engine.Engine [cached since 40.42s ago] (2, 1)
+INFO:     127.0.0.1:59898 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:45,185 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:45,545 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:45,545 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:45,546 INFO sqlalchemy.engine.Engine [cached since 157.3s ago] (2,)
+2025-06-29 12:19:45,547 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:45,547 INFO sqlalchemy.engine.Engine [cached since 40.79s ago] (2, 1)
+INFO:     127.0.0.1:59900 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:46,646 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:46,646 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:46,646 INFO sqlalchemy.engine.Engine [cached since 158.4s ago] (2,)
+2025-06-29 12:19:46,648 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:46,648 INFO sqlalchemy.engine.Engine [cached since 41.89s ago] (2, 1)
+INFO:     127.0.0.1:59902 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:19:46,650 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:19:48,566 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:19:48,567 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:19:48,567 INFO sqlalchemy.engine.Engine [cached since 160.3s ago] (2,)
+2025-06-29 12:19:48,568 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:19:48,568 INFO sqlalchemy.engine.Engine [cached since 43.81s ago] (2, 1)
+INFO:     127.0.0.1:59904 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+INFO:     connection open
+INFO:     connection closed
+2025-06-29 12:20:05,763 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:20:05,763 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:20:05,763 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:20:05,763 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:20:05,764 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:20:05,765 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:20:05,766 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:20:05,766 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:20:05,766 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:20:05,766 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:20:05,766 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:20:05,766 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:20:05,766 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:20:05,767 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:20:05,767 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+2025-06-29 12:20:05,768 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:20:05,768 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:20:05,768 INFO sqlalchemy.engine.Engine [cached since 177.5s ago] (2,)
+2025-06-29 12:20:05,769 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:20:05,769 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:20:05,769 INFO sqlalchemy.engine.Engine [cached since 177.5s ago] (2,)
+2025-06-29 12:20:05,769 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:20:05,770 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:20:05,770 INFO sqlalchemy.engine.Engine [cached since 177.5s ago] (2,)
+2025-06-29 12:20:05,775 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:20:05,775 INFO sqlalchemy.engine.Engine [cached since 61.01s ago] (2, 1)
+2025-06-29 12:20:05,776 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:20:05,776 INFO sqlalchemy.engine.Engine [cached since 61.01s ago] (2, 1)
+2025-06-29 12:20:05,777 INFO sqlalchemy.engine.Engine INSERT INTO chat_rooms (name, description, is_private, created_by) VALUES (?, ?, ?, ?) RETURNING id, created_at, updated_at
+2025-06-29 12:20:05,777 INFO sqlalchemy.engine.Engine [cached since 152.5s ago] ('bbbb', None, 0, 2)
+INFO:     127.0.0.1:59914 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+WebSocket error for user 2: WebSocket is not connected. Need to call "accept" first.
+2025-06-29 12:20:05,784 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59906 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY4Njg3LCJpYXQiOjE3NTExNjY4ODd9.4_7yPdzWQGI3ynOjz9j3DnxbhOj9trDW_tXoTMEltO0&room_id=1" [accepted]
+WebSocket error for user 2: WebSocket is not connected. Need to call "accept" first.
+2025-06-29 12:20:05,786 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:20:05,788 INFO sqlalchemy.engine.Engine INSERT INTO room_members (user_id, room_id, role) VALUES (?, ?, ?) RETURNING id, joined_at
+2025-06-29 12:20:05,788 INFO sqlalchemy.engine.Engine [cached since 152.5s ago] (2, 3, 'ADMIN')
+2025-06-29 12:20:05,792 INFO sqlalchemy.engine.Engine COMMIT
+2025-06-29 12:20:05,793 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:20:05,794 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms 
+WHERE chat_rooms.id = ?
+2025-06-29 12:20:05,794 INFO sqlalchemy.engine.Engine [cached since 152.5s ago] (3,)
+2025-06-29 12:20:05,796 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59935 - "GET /auth/github/callback?code=d65403bf884bfc00ae40&state=rl2qyikNEufw0IS6wgZ1OuniyorPuy85mygHHWBfnCU HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:59938 - "GET /auth/github/callback?code=d65403bf884bfc00ae40&state=rl2qyikNEufw0IS6wgZ1OuniyorPuy85mygHHWBfnCU HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:59942 - "GET /auth/github/login HTTP/1.1" 200 OK
+2025-06-29 12:20:18,092 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:20:18,092 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:20:18,093 INFO sqlalchemy.engine.Engine [cached since 189.8s ago] (2,)
+2025-06-29 12:20:18,093 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59942 - "GET /auth/me HTTP/1.1" 200 OK
+2025-06-29 12:20:18,095 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:20:18,095 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:20:18,095 INFO sqlalchemy.engine.Engine [cached since 189.8s ago] (2,)
+2025-06-29 12:20:18,095 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59942 - "GET /auth/me HTTP/1.1" 200 OK
+2025-06-29 12:20:18,904 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:20:18,905 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.github_id = ?
+2025-06-29 12:20:18,905 INFO sqlalchemy.engine.Engine [generated in 0.00022s] (53076594,)
+2025-06-29 12:20:18,912 INFO sqlalchemy.engine.Engine COMMIT
+2025-06-29 12:20:18,912 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:20:18,913 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:20:18,913 INFO sqlalchemy.engine.Engine [cached since 147.4s ago] (2,)
+2025-06-29 12:20:18,914 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59942 - "GET /auth/github/callback?code=8f79d9d3b3a4ad89e4fc&state=OD54Gl0cudmzhHdQXSxp9eHuojnKnzOvIy85uFiPDIs HTTP/1.1" 200 OK
+2025-06-29 12:20:18,943 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:20:18,943 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:20:18,943 INFO sqlalchemy.engine.Engine [cached since 190.7s ago] (2,)
+2025-06-29 12:20:18,944 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59942 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59950 - "GET /auth/github/callback?code=8f79d9d3b3a4ad89e4fc&state=OD54Gl0cudmzhHdQXSxp9eHuojnKnzOvIy85uFiPDIs HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:59942 - "GET /auth/github/callback?code=8f79d9d3b3a4ad89e4fc&state=OD54Gl0cudmzhHdQXSxp9eHuojnKnzOvIy85uFiPDIs HTTP/1.1" 400 Bad Request
+2025-06-29 12:20:20,973 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:20:20,974 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:20:20,974 INFO sqlalchemy.engine.Engine [cached since 192.7s ago] (2,)
+INFO:     127.0.0.1:59950 - "GET /api/v1/status HTTP/1.1" 200 OK
+2025-06-29 12:20:20,977 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:20:20,977 INFO sqlalchemy.engine.Engine [cached since 192.7s ago] (2,)
+INFO:     127.0.0.1:59957 - "GET /api/v1/status HTTP/1.1" 200 OK
+2025-06-29 12:20:20,989 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?, ?)
+2025-06-29 12:20:20,989 INFO sqlalchemy.engine.Engine [cached since 192.7s ago] (1, 3)
+2025-06-29 12:20:20,994 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:20:20,994 INFO sqlalchemy.engine.Engine [cached since 192.7s ago] (2,)
+2025-06-29 12:20:20,994 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59942 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:20:20,996 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:20:20,996 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:20:20,996 INFO sqlalchemy.engine.Engine [cached since 192.7s ago] (2,)
+2025-06-29 12:20:20,996 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:20:20,996 INFO sqlalchemy.engine.Engine [cached since 192.7s ago] (2,)
+2025-06-29 12:20:20,997 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?, ?)
+2025-06-29 12:20:20,997 INFO sqlalchemy.engine.Engine [cached since 192.7s ago] (1, 3)
+2025-06-29 12:20:20,997 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:20:20,997 INFO sqlalchemy.engine.Engine [cached since 192.7s ago] (2,)
+2025-06-29 12:20:20,998 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59957 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:20:55,664 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:20:55,664 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:20:55,665 INFO sqlalchemy.engine.Engine [cached since 227.4s ago] (1,)
+2025-06-29 12:20:55,665 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59991 - "POST /auth/dev/login HTTP/1.1" 200 OK
+2025-06-29 12:20:55,729 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:20:55,729 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:20:55,729 INFO sqlalchemy.engine.Engine [cached since 227.5s ago] (1,)
+2025-06-29 12:20:55,730 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms 
+WHERE chat_rooms.id = ?
+2025-06-29 12:20:55,730 INFO sqlalchemy.engine.Engine [generated in 0.00005s] (2,)
+2025-06-29 12:20:55,730 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?)
+2025-06-29 12:20:55,730 INFO sqlalchemy.engine.Engine [cached since 227.4s ago] (2,)
+2025-06-29 12:20:55,731 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:20:55,731 INFO sqlalchemy.engine.Engine [cached since 227.4s ago] (1,)
+2025-06-29 12:20:55,731 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:20:55,731 INFO sqlalchemy.engine.Engine [cached since 111s ago] (1, 2)
+2025-06-29 12:20:55,731 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:59993 - "POST /api/v1/rooms/2/join HTTP/1.1" 400 Bad Request
+2025-06-29 12:21:06,536 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:21:06,536 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:21:06,536 INFO sqlalchemy.engine.Engine [cached since 238.3s ago] (1,)
+2025-06-29 12:21:06,537 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:60025 - "POST /auth/dev/login HTTP/1.1" 200 OK
+2025-06-29 12:21:06,599 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:21:06,600 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:21:06,600 INFO sqlalchemy.engine.Engine [cached since 238.3s ago] (1,)
+2025-06-29 12:21:06,600 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:21:06,600 INFO sqlalchemy.engine.Engine [cached since 121.8s ago] (1, 2)
+2025-06-29 12:21:06,600 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms 
+WHERE chat_rooms.id = ?
+2025-06-29 12:21:06,601 INFO sqlalchemy.engine.Engine [cached since 10.87s ago] (2,)
+2025-06-29 12:21:06,601 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?)
+2025-06-29 12:21:06,601 INFO sqlalchemy.engine.Engine [cached since 238.3s ago] (2,)
+2025-06-29 12:21:06,601 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:21:06,601 INFO sqlalchemy.engine.Engine [cached since 238.3s ago] (1,)
+2025-06-29 12:21:06,602 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:60027 - "GET /api/v1/rooms/2 HTTP/1.1" 200 OK
+2025-06-29 12:21:46,075 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:21:46,076 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:21:46,076 INFO sqlalchemy.engine.Engine [cached since 277.8s ago] (2,)
+INFO:     127.0.0.1:60067 - "GET /api/v1/status HTTP/1.1" 200 OK
+2025-06-29 12:21:46,078 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:21:46,078 INFO sqlalchemy.engine.Engine [cached since 277.8s ago] (2,)
+INFO:     127.0.0.1:60067 - "GET /api/v1/status HTTP/1.1" 200 OK
+2025-06-29 12:21:46,079 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?, ?)
+2025-06-29 12:21:46,080 INFO sqlalchemy.engine.Engine [cached since 277.8s ago] (1, 3)
+2025-06-29 12:21:46,107 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:21:46,107 INFO sqlalchemy.engine.Engine [cached since 277.8s ago] (2,)
+2025-06-29 12:21:46,108 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:60066 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:21:46,110 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:21:46,110 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:21:46,110 INFO sqlalchemy.engine.Engine [cached since 277.8s ago] (2,)
+2025-06-29 12:21:46,110 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:21:46,110 INFO sqlalchemy.engine.Engine [cached since 277.8s ago] (2,)
+2025-06-29 12:21:46,111 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?, ?)
+2025-06-29 12:21:46,111 INFO sqlalchemy.engine.Engine [cached since 277.8s ago] (1, 3)
+2025-06-29 12:21:46,112 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:21:46,112 INFO sqlalchemy.engine.Engine [cached since 277.8s ago] (2,)
+2025-06-29 12:21:46,113 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:60067 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:21:55,082 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:21:55,083 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:21:55,083 INFO sqlalchemy.engine.Engine [cached since 286.8s ago] (2,)
+INFO:     127.0.0.1:60075 - "GET /api/v1/status HTTP/1.1" 200 OK
+2025-06-29 12:21:55,085 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:21:55,085 INFO sqlalchemy.engine.Engine [cached since 286.8s ago] (2,)
+INFO:     127.0.0.1:60075 - "GET /api/v1/status HTTP/1.1" 200 OK
+2025-06-29 12:21:55,088 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?, ?)
+2025-06-29 12:21:55,088 INFO sqlalchemy.engine.Engine [cached since 286.8s ago] (1, 3)
+2025-06-29 12:21:55,089 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:21:55,089 INFO sqlalchemy.engine.Engine [cached since 286.8s ago] (2,)
+2025-06-29 12:21:55,090 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:60069 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:21:55,092 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:21:55,092 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:21:55,092 INFO sqlalchemy.engine.Engine [cached since 286.8s ago] (2,)
+2025-06-29 12:21:55,093 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:21:55,093 INFO sqlalchemy.engine.Engine [cached since 286.8s ago] (2,)
+2025-06-29 12:21:55,094 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?, ?)
+2025-06-29 12:21:55,095 INFO sqlalchemy.engine.Engine [cached since 286.8s ago] (1, 3)
+2025-06-29 12:21:55,095 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:21:55,096 INFO sqlalchemy.engine.Engine [cached since 286.8s ago] (2,)
+2025-06-29 12:21:55,096 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:60075 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:22:31,734 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:22:31,734 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:22:31,734 INFO sqlalchemy.engine.Engine [cached since 323.5s ago] (1,)
+2025-06-29 12:22:31,735 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:22:31,735 INFO sqlalchemy.engine.Engine [cached since 207s ago] (1, 2)
+INFO:     127.0.0.1:60106 - "WebSocket /ws/chat?token=dev&room_id=2" [accepted]
+INFO:     connection open
+2025-06-29 12:22:31,736 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:22:31,736 INFO sqlalchemy.engine.Engine [cached since 207s ago] (1, 2)
+2025-06-29 12:22:31,736 INFO sqlalchemy.engine.Engine INSERT INTO messages (content, message_type, user_id, room_id, parent_id, has_latex, has_code) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at, updated_at
+2025-06-29 12:22:31,736 INFO sqlalchemy.engine.Engine [cached since 196.2s ago] ('WebSocketテストメッセージ', 'TEXT', 1, 2, None, 0, 0)
+INFO:     connection closed
+2025-06-29 12:22:31,737 INFO sqlalchemy.engine.Engine COMMIT
+2025-06-29 12:22:31,737 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:22:31,737 INFO sqlalchemy.engine.Engine SELECT messages.id, messages.content, messages.message_type, messages.user_id, messages.room_id, messages.parent_id, messages.has_latex, messages.has_code, messages.created_at, messages.updated_at 
+FROM messages 
+WHERE messages.id = ?
+2025-06-29 12:22:31,737 INFO sqlalchemy.engine.Engine [cached since 196.2s ago] (3,)
+WebSocket error for user 1: WebSocket is not connected. Need to call "accept" first.
+2025-06-29 12:22:31,738 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-06-29 12:22:52,938 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:22:52,938 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:22:52,938 INFO sqlalchemy.engine.Engine [cached since 344.7s ago] (1,)
+2025-06-29 12:22:52,939 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:22:52,939 INFO sqlalchemy.engine.Engine [cached since 228.2s ago] (1, 2)
+INFO:     127.0.0.1:60122 - "WebSocket /ws/chat?token=dev&room_id=2" [accepted]
+INFO:     connection open
+2025-06-29 12:22:52,940 INFO sqlalchemy.engine.Engine INSERT INTO messages (content, message_type, user_id, room_id, parent_id, has_latex, has_code) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at, updated_at
+2025-06-29 12:22:52,940 INFO sqlalchemy.engine.Engine [cached since 217.4s ago] ('WebSocketテストメッセージ', 'TEXT', 1, 2, None, 0, 0)
+2025-06-29 12:22:52,940 INFO sqlalchemy.engine.Engine COMMIT
+2025-06-29 12:22:52,941 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:22:52,941 INFO sqlalchemy.engine.Engine SELECT messages.id, messages.content, messages.message_type, messages.user_id, messages.room_id, messages.parent_id, messages.has_latex, messages.has_code, messages.created_at, messages.updated_at 
+FROM messages 
+WHERE messages.id = ?
+2025-06-29 12:22:52,941 INFO sqlalchemy.engine.Engine [cached since 217.4s ago] (4,)
+2025-06-29 12:22:52,942 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+2025-06-29 12:23:05,373 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:23:05,373 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:23:05,373 INFO sqlalchemy.engine.Engine [cached since 357.1s ago] (2,)
+2025-06-29 12:23:05,373 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:60135 - "GET /auth/me HTTP/1.1" 200 OK
+2025-06-29 12:23:05,375 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:23:05,375 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:23:05,375 INFO sqlalchemy.engine.Engine [cached since 357.1s ago] (2,)
+2025-06-29 12:23:05,375 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:60135 - "GET /auth/me HTTP/1.1" 200 OK
+2025-06-29 12:23:05,393 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:23:05,393 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:23:05,393 INFO sqlalchemy.engine.Engine [cached since 357.1s ago] (2,)
+INFO:     127.0.0.1:60137 - "GET /api/v1/status HTTP/1.1" 200 OK
+2025-06-29 12:23:05,395 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:23:05,395 INFO sqlalchemy.engine.Engine [cached since 357.1s ago] (2,)
+INFO:     127.0.0.1:60139 - "GET /api/v1/status HTTP/1.1" 200 OK
+2025-06-29 12:23:05,397 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?, ?)
+2025-06-29 12:23:05,398 INFO sqlalchemy.engine.Engine [cached since 357.1s ago] (1, 3)
+2025-06-29 12:23:05,398 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:23:05,398 INFO sqlalchemy.engine.Engine [cached since 357.1s ago] (2,)
+2025-06-29 12:23:05,398 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:60135 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:23:05,399 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:23:05,399 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:23:05,400 INFO sqlalchemy.engine.Engine [cached since 357.1s ago] (2,)
+2025-06-29 12:23:05,400 INFO sqlalchemy.engine.Engine SELECT chat_rooms.id, chat_rooms.name, chat_rooms.description, chat_rooms.is_private, chat_rooms.created_by, chat_rooms.created_at, chat_rooms.updated_at 
+FROM chat_rooms JOIN room_members ON chat_rooms.id = room_members.room_id 
+WHERE room_members.user_id = ?
+2025-06-29 12:23:05,400 INFO sqlalchemy.engine.Engine [cached since 357.1s ago] (2,)
+2025-06-29 12:23:05,401 INFO sqlalchemy.engine.Engine SELECT room_members.room_id AS room_members_room_id, room_members.id AS room_members_id, room_members.user_id AS room_members_user_id, room_members.role AS room_members_role, room_members.joined_at AS room_members_joined_at 
+FROM room_members 
+WHERE room_members.room_id IN (?, ?)
+2025-06-29 12:23:05,401 INFO sqlalchemy.engine.Engine [cached since 357.1s ago] (1, 3)
+2025-06-29 12:23:05,401 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.github_id AS users_github_id, users.username AS users_username, users.display_name AS users_display_name, users.email AS users_email, users.avatar_url AS users_avatar_url, users.bio AS users_bio, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id IN (?)
+2025-06-29 12:23:05,401 INFO sqlalchemy.engine.Engine [cached since 357.1s ago] (2,)
+2025-06-29 12:23:05,402 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:60139 - "GET /api/v1/rooms HTTP/1.1" 200 OK
+2025-06-29 12:23:07,363 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:23:07,363 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:23:07,363 INFO sqlalchemy.engine.Engine [cached since 359.1s ago] (2,)
+2025-06-29 12:23:07,363 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:23:07,363 INFO sqlalchemy.engine.Engine [cached since 242.6s ago] (2, 1)
+2025-06-29 12:23:07,364 INFO sqlalchemy.engine.Engine SELECT messages.id, messages.content, messages.message_type, messages.user_id, messages.room_id, messages.parent_id, messages.has_latex, messages.has_code, messages.created_at, messages.updated_at 
+FROM messages 
+WHERE messages.room_id = ? ORDER BY messages.created_at DESC
+ LIMIT ? OFFSET ?
+2025-06-29 12:23:07,364 INFO sqlalchemy.engine.Engine [cached since 225.7s ago] (1, 50, 0)
+2025-06-29 12:23:07,364 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:60139 - "GET /api/v1/rooms/1/messages?limit=50 HTTP/1.1" 200 OK
+2025-06-29 12:23:07,367 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:23:07,367 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:23:07,368 INFO sqlalchemy.engine.Engine [cached since 359.1s ago] (2,)
+2025-06-29 12:23:07,370 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:23:07,371 INFO sqlalchemy.engine.Engine [cached since 242.6s ago] (2, 1)
+2025-06-29 12:23:07,372 INFO sqlalchemy.engine.Engine SELECT messages.id, messages.content, messages.message_type, messages.user_id, messages.room_id, messages.parent_id, messages.has_latex, messages.has_code, messages.created_at, messages.updated_at 
+FROM messages 
+WHERE messages.room_id = ? ORDER BY messages.created_at DESC
+ LIMIT ? OFFSET ?
+2025-06-29 12:23:07,372 INFO sqlalchemy.engine.Engine [cached since 225.7s ago] (1, 50, 0)
+2025-06-29 12:23:07,373 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:60135 - "GET /api/v1/rooms/1/messages?limit=50 HTTP/1.1" 200 OK
+2025-06-29 12:34:50,422 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-29 12:34:50,423 INFO sqlalchemy.engine.Engine SELECT users.id, users.github_id, users.username, users.display_name, users.email, users.avatar_url, users.bio, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-06-29 12:34:50,424 INFO sqlalchemy.engine.Engine [cached since 1062s ago] (2,)
+2025-06-29 12:34:50,425 INFO sqlalchemy.engine.Engine SELECT room_members.id, room_members.user_id, room_members.room_id, room_members.role, room_members.joined_at 
+FROM room_members 
+WHERE room_members.user_id = ? AND room_members.room_id = ?
+2025-06-29 12:34:50,425 INFO sqlalchemy.engine.Engine [cached since 945.7s ago] (2, 1)
+INFO:     127.0.0.1:60950 - "WebSocket /ws/chat?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJnaXRodWJfaWQiOjUzMDc2NTk0LCJ1c2VybmFtZSI6ImFiYXAzNCIsImVtYWlsIjoiYWJhcDAwMDJAZ21haWwuY29tIiwiZXhwIjoxNzUxMTY5ODgxLCJpYXQiOjE3NTExNjgwODF9.HT0T53dI0Ahm688XX3D8MiD4BQc31j9NTV6UanLlwhU&room_id=1" [accepted]
+INFO:     connection open
+2025-06-29 12:34:52,321 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     connection closed
+INFO:     127.0.0.1:61075 - "GET /auth/github/login HTTP/1.1" 200 OK
